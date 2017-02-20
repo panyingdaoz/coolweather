@@ -2,8 +2,8 @@ package com.example.panyingdao.coolweather.util;
 
 import android.text.TextUtils;
 
-import com.example.panyingdao.coolweather.City;
-import com.example.panyingdao.coolweather.Province;
+import com.example.panyingdao.coolweather.db.City;
+import com.example.panyingdao.coolweather.db.Province;
 import com.example.panyingdao.coolweather.db.County;
 
 import org.json.JSONArray;

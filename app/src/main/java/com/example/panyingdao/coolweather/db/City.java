@@ -1,4 +1,4 @@
-package com.example.panyingdao.coolweather;
+package com.example.panyingdao.coolweather.db;
 
 import org.litepal.crud.DataSupport;
 
@@ -7,6 +7,7 @@ import org.litepal.crud.DataSupport;
  */
 
 public class City extends DataSupport {
+
     private int id;
 
     private String cityName;

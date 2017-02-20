@@ -14,7 +14,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.panyingdao.coolweather.db.City;
 import com.example.panyingdao.coolweather.db.County;
+import com.example.panyingdao.coolweather.db.Province;
 import com.example.panyingdao.coolweather.util.HttpUtil;
 import com.example.panyingdao.coolweather.util.Utility;
 
@@ -112,7 +114,7 @@ public class ChooseAreaFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (currentLevel == LEVEL_COUNTY) {
-                    queryCounties();
+                    queryCities();
                 } else if (currentLevel == LEVEL_CITY) {
                     queryProvinces();
                 }
@@ -145,10 +147,10 @@ public class ChooseAreaFragment extends Fragment {
     /**
      * 查询选中省内所有的市，优先从数据库查询，如果没有查询到再去服务器查询
      */
-    private void queryCounties() {
+    private void queryCities() {
         titleText.setText(selectedProvince.getProvinceName());
         backButton.setVisibility(View.VISIBLE);
-        cityList = DataSupport.where("provinced=?", String.valueOf(selectedProvince.getId())).find(City.class);
+        cityList = DataSupport.where("provinceid = ?", String.valueOf(selectedProvince.getId())).find(City.class);
         if (cityList.size() > 0) {
             dataList.clear();
             for (City city : cityList) {
@@ -167,10 +169,10 @@ public class ChooseAreaFragment extends Fragment {
     /**
      * 查询选中中市内所有的县，优先从数据查询，如果没有查询到再去服务器查询
      */
-    private void queryCities() {
+    private void queryCounties() {
         titleText.setText(selectedCity.getCityName());
         backButton.setVisibility(View.VISIBLE);
-        countyList = DataSupport.where("cityid=?", String.valueOf(selectedCity.getId())).find(County.class);
+        countyList = DataSupport.where("cityid = ?", String.valueOf(selectedCity.getId())).find(County.class);
         if (countyList.size() > 0) {
             dataList.clear();
             for (County county : countyList) {

@@ -1,4 +1,4 @@
-package com.example.panyingdao.coolweather;
+package com.example.panyingdao.coolweather.db;
 
 import org.litepal.crud.DataSupport;
 
