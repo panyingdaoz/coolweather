@@ -1,4 +1,4 @@
-package com.example.panyingdao.coolweather;
+package com.example.panyingdao.coolweather.service;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -20,9 +20,6 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class AutoUpdateService extends Service {
-
-    public AutoUpdateService() {
-    }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -95,6 +92,6 @@ public class AutoUpdateService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         // TODO: Return the communication channel to the service.
-        throw null;
+        return null;
     }
 }

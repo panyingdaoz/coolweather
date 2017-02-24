@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.panyingdao.coolweather.gson.Forecast;
 import com.example.panyingdao.coolweather.gson.Weather;
+import com.example.panyingdao.coolweather.service.AutoUpdateService;
 import com.example.panyingdao.coolweather.util.HttpUtil;
 import com.example.panyingdao.coolweather.util.Utility;
 
@@ -224,12 +225,8 @@ public class WeatherActivity extends AppCompatActivity {
                 minText.setText(forecast.temperature.min);
                 Log.d("TAG", "当前值MIA=" + forecast.temperature.min);
                 forecastLayout.addView(view);
-
-                Intent intent = new Intent(this, AutoUpdateService.class);
-                startActivity(intent);
-
             }
-            if (weather.aqi != null){
+            if (weather.aqi != null) {
                 aqiText.setText(weather.aqi.city.aqi);
                 Log.d("TAG", "当前值1=" + aqiText);
                 pm25Text.setText(weather.aqi.city.pm25);
@@ -242,6 +239,9 @@ public class WeatherActivity extends AppCompatActivity {
             carWashText.setText(carWashh);
             sportText.setText(sport);
             weatherLayout.setVisibility(View.VISIBLE);
+
+            Intent intent = new Intent(this, AutoUpdateService.class);
+            startService(intent);
         } else {
             Toast.makeText(WeatherActivity.this, "获取天气信息失败！", Toast.LENGTH_SHORT).show();
         }
